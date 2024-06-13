@@ -2,23 +2,18 @@
 
 ## Project setup
 ```
-npm install
+DB : postgres db
+BE : Nestjs
+FE : Vuejs
 ```
 
-### Compiles and hot-reloads for development
+### Compiles API Backend
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+npm run start:dev
 ```
 
-### Lints and fixes files
+### Compiles Interface Frontend
 ```
-npm run lint
+go to fe package : cd frontend
+then run : npm run serve
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
