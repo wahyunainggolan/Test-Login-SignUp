@@ -8,7 +8,7 @@
                     <div class="d-flex">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a @click="logoutAction()" class="nav-link " aria-current="page" href="#">Logout</a>
+                                <a @click="logoutAction()" class="nav-link" aria-current="page" href="#">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -45,20 +45,28 @@ export default {
   },
   methods: {
     getUser() {
-        axios.get('http://localhost:3000/api/users/' + localStorage.getItem('idUser'))
-        .then((res) => {
-           this.user = res.data;
-           return res;
-        })
-        .catch((err) => {
-           return err
-        });
+      axios.get('http://localhost:3000/api/users/' + localStorage.getItem('idUser'))
+      .then((res) => {
+        this.user = res.data;
+        return res;
+      })
+      .catch((err) => {
+        return err
+      });
     },
  
     logoutAction () {
-        localStorage.setItem('token', "")
-        localStorage.setItem('idUser', "")
+      localStorage.setItem('token', "")
+      localStorage.setItem('idUser', "")
+      axios.get('http://localhost:3000/api/auth/logout' + this.user.name)
+      .then((res) => {
+        this.user = res.data;
         this.$router.push('/')
+
+        return res;
+      }).catch((err) => {
+        return err
+      });
     }
   },
 };

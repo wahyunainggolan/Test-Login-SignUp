@@ -6,6 +6,8 @@ import * as Joi from '@hapi/joi';
 import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { RedisModule } from './auth/redis/redis.module';
+import configuration from './config/configuration';
 
 @Module({
   imports: [
@@ -17,11 +19,13 @@ import { AuthModule } from './auth/auth.module';
         POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
         PORT: Joi.number(),
+        // load: [configuration],
       }),
     }),
     DatabaseModule,
     UsersModule,
     AuthModule,
+    // RedisModule
   ],
   controllers: [AppController],
   providers: [AppService],

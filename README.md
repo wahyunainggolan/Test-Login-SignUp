@@ -5,6 +5,7 @@
 DB : postgres db
 BE : Nestjs
 FE : Vuejs
+Install Redis
 ```
 
 ### Compiles API Backend
